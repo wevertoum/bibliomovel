@@ -9,7 +9,7 @@
     </style>
 
     <!-- LOGIN THEME -->
-    <style name="LoginTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="FullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>

@@ -8,6 +8,8 @@
     <color name="colorPrimaryAlpha184">#b8ffab00</color>
     <color name="colorPrimaryAlpha108">#6bffab00</color>
 
+    <color name="colorPrimaryDarkAlpha108">#6cff5722</color>
+
     <color name="blueGrey">#455a64</color>
     <color name="blueGreyLight">#546e7a</color>
     <color name="blueGreyLightAlpha108">#6c546e7a</color>
@@ -16,4 +18,6 @@
     <color name="whiteAlpha184">#b8ffffff</color>
     <color name="whiteAlpha108">#6cffffff</color>
     <color name="whiteAlpha50">#32ffffff</color>
+
+    <color name="bgLight">#fffbf5</color>
 </resources>
