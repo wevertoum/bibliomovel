@@ -20,5 +20,6 @@
             android:name=".LoginActivity"
             android:theme="@style/LoginTheme" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
 </manifest>
