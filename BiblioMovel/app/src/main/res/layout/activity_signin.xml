@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/LoginTheme"
     tools:context="br.ufg.inf.level6.bibliomovel.LoginActivity">
 
 
@@ -28,7 +27,7 @@
             android:gravity="left|center_vertical|center"
             android:text="BiblioMóvel"
             android:textAppearance="@android:style/TextAppearance.Material.Title"
-            android:textColor="000000"
+            android:textColor="#000000"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -51,17 +50,17 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/loginInputHolder"
         android:layout_width="0dp"
-        android:layout_height="441dp"
+        android:layout_height="459dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.491">
+        app:layout_constraintVertical_bias="0.504">
 
         <EditText
             android:id="@+id/loginEdtEmail"
@@ -85,7 +84,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="116dp"
             android:backgroundTint="#000000"
             android:ems="10"
             android:hint="nome"
@@ -93,7 +92,7 @@
             android:textColor="#000000"
             android:textColorHint="#A0A0A0"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/loginIconEmail"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -110,16 +109,29 @@
             android:textColor="#000000"
             android:textColorHint="#A0A0A0"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/loginIconEmail"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/signinIconCPF"
+            android:layout_width="52dp"
+            android:layout_height="34dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:tint="#FF8C00"
+            app:layout_constraintBottom_toBottomOf="@+id/loginEdtSenhaConfirmacao"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/signinCPF"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_cpf" />
+
 
         <EditText
             android:id="@+id/signinTelefone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="212dp"
             android:backgroundTint="#000000"
             android:ems="10"
             android:hint="telefone"
@@ -129,82 +141,73 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/loginIconEmail"
-            app:layout_constraintTop_toTopOf="parent" />
+            tools:layout_editor_absoluteY="214dp" />
+
+        <ImageView
+            android:id="@+id/signinIconTEL"
+            android:layout_width="52dp"
+            android:layout_height="34dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:tint="#FF8C00"
+            app:layout_constraintBottom_toBottomOf="@+id/loginEdtSenhaConfirmacao"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/signinTelefone"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_telefone" />
+
 
         <ImageView
             android:id="@+id/loginIconEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="54dp"
+            android:layout_height="33dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:tint="#FF8C00"
             app:layout_constraintBottom_toBottomOf="@+id/loginEdtEmail"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/loginEdtEmail"
+            app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/ic_email" />
 
         <ImageView
             android:id="@+id/loginIconNome"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="55dp"
+            android:layout_height="39dp"
             android:tint="#FF8C00"
-            app:layout_constraintBottom_toBottomOf="@+id/loginEdtEmail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/loginEdtEmail"
-            app:srcCompat="@drawable/ic_per" />
+            app:layout_constraintTop_toTopOf="@+id/signinNome"
+            app:srcCompat="@drawable/ic_person" />
 
         <ImageView
             android:id="@+id/loginIconSenha"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="52dp"
+            android:layout_height="34dp"
             android:tint="#FF8C00"
-            app:layout_constraintBottom_toBottomOf="@+id/loginEdtSenha"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/loginEdtSenha"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/ic_lock" />
-
-        <EditText
-            android:id="@+id/loginEdtSenha"
-            android:layout_width="301dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#000000"
-            android:ems="10"
-            android:hint="senha"
-            android:inputType="numberPassword"
-            android:textColor="#000000"
-            android:textColorHint="#A0A0A0"
-            tools:layout_editor_absoluteX="58dp"
-            tools:layout_editor_absoluteY="262dp" />
+            app:srcCompat="@drawable/ic_lock"
+            tools:layout_editor_absoluteY="260dp" />
 
         <ImageView
             android:id="@+id/loginIconSenhaConfirmacao"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="52dp"
+            android:layout_height="34dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:tint="#FF8C00"
             app:layout_constraintBottom_toBottomOf="@+id/loginEdtSenhaConfirmacao"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/loginEdtSenhaConfirmacao"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_lock" />
 
 
         <EditText
             android:id="@+id/loginEdtSenhaConfirmacao"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="307dp"
+            android:layout_height="44dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="192dp"
             android:backgroundTint="#000000"
             android:ems="10"
             android:hint="confirmação de senha"
@@ -212,7 +215,7 @@
             android:textColor="#DCDCDC"
             android:textColorHint="#A0A0A0"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/loginIconSenha"
             app:layout_constraintTop_toBottomOf="@+id/loginEdtEmail" />
 
@@ -224,10 +227,19 @@
             android:background="@drawable/rounded_button"
             android:fontFamily="casual"
             android:text="CADASTRAR"
-            android:textColor="white"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/signinSenha"
+            android:layout_width="308dp"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:hint="senha"
+            android:inputType="numberPassword"
+            tools:layout_editor_absoluteX="52dp"
+            tools:layout_editor_absoluteY="263dp" />
 
     </android.support.constraint.ConstraintLayout>
 
