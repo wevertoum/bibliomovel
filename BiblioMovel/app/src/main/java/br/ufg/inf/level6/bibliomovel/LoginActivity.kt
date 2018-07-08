@@ -26,9 +26,6 @@ class LoginActivity : AppCompatActivity() {
                 var user = firebaseAuth.currentUser;
                 if (user != null){
                     Log.d("Login", "OnAuthStateChanged:signed_in:" + user.uid)
-                    var name = user.displayName
-                    var email = user.email
-                    var photo = user.photoUrl
                 } else {
                     Log.d("Not logged", "onAuthStateChanged:signed_out")
                 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BiblioMovel</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="senha">Senha</string>
 </resources>

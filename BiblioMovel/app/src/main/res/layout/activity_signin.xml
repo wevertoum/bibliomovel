@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/LoginTheme"
+    android:theme="@style/Theme.AppCompat.NoActionBar"
     tools:context="br.ufg.inf.level6.bibliomovel.LoginActivity">
 
 
@@ -28,7 +28,7 @@
             android:gravity="left|center_vertical|center"
             android:text="BiblioMóvel"
             android:textAppearance="@android:style/TextAppearance.Material.Title"
-            android:textColor="000000"
+            android:textColor="#000000"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -155,7 +155,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/loginEdtEmail"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/loginEdtEmail"
-            app:srcCompat="@drawable/ic_per" />
+            app:srcCompat="@drawable/ic_book" />
 
         <ImageView
             android:id="@+id/loginIconSenha"
@@ -177,7 +177,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#000000"
             android:ems="10"
-            android:hint="senha"
+            android:hint="@string/senha"
             android:inputType="numberPassword"
             android:textColor="#000000"
             android:textColorHint="#A0A0A0"
@@ -223,8 +223,8 @@
             android:layout_marginBottom="7dp"
             android:background="@drawable/rounded_button"
             android:fontFamily="casual"
-            android:text="CADASTRAR"
-            android:textColor="white"
+            android:text="@string/cadastrar"
+            android:textColor="#ffffff"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
