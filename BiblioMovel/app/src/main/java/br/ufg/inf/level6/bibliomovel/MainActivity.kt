@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val intent = Intent(this, ProfileActivity::class.java)
+        val intent = Intent(this, SigninActivity::class.java)
         startActivity(intent)
     }
 
