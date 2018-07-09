@@ -47,6 +47,15 @@ class MainActivity : AppCompatActivity() {
                 Log.w("ERR", "Failed to read value.", error.toException())
             }
         })
+
+
+
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val intent = Intent(this, ProfileActivity::class.java)
+        startActivity(intent)
+
     }
 
     private fun addDataToList(dataSnapshot: DataSnapshot) {
