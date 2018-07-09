@@ -22,8 +22,10 @@ class MainActivity : AppCompatActivity() {
     var bookList: MutableList<Livro>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //Add event listener to "livros"
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                //add data livros to list
                 addDataToList(dataSnapshot)
             }
 
@@ -42,7 +44,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addDataToList(dataSnapshot: DataSnapshot) {
+        //get database items "Livros"
         val items = dataSnapshot.children.iterator()
+
         if(items !== null) {
 
             while(items.hasNext()) {
@@ -50,12 +54,13 @@ class MainActivity : AppCompatActivity() {
                 var livro = currentItem.getValue() as HashMap<Any, Any>
                 val book: Livro = Livro()
 
+                //Get properties
                 book.autor = livro.getValue("autor") as String
                 book.nome = livro.getValue("nome") as String
                 book.descricao = livro.getValue("descricao") as String
                 book.capa = livro.getValue("capa") as String
 
-
+                bookList!!.add(book);
                 Log.d("autor", "autor: " + book.autor)
             }
         }
