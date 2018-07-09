@@ -120,4 +120,6 @@ BiblioMovel/local.properties
 .idea/
 BiblioMovel/app/app.iml
 BiblioMovel/.idea/*
-BiblioMovel/.idea_modules
+BiblioMovel/.idea_modules/*
+BiblioMovel/local.properties
+BiblioMovel/.gradle/*
