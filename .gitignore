@@ -81,6 +81,7 @@ gen-external-apklibs
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
+.idea/
 
 # JIRA plugin
 atlassian-ide-plugin.xml
@@ -114,3 +115,9 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+.idea/workspace.xml
+BiblioMovel/local.properties
+.idea/
+BiblioMovel/app/app.iml
+BiblioMovel/.idea/*
+BiblioMovel/.idea_modules
