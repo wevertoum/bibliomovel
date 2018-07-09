@@ -43,20 +43,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun addDataToList(dataSnapshot: DataSnapshot) {
         val items = dataSnapshot.children.iterator()
-        var currentItem = items.next()
+        if(items !== null) {
 
-        var livro = currentItem.getValue() as HashMap<Any, Any>
-        val book: Livro = Livro()
+            while(items.hasNext()) {
+                var currentItem = items.next()
+                var livro = currentItem.getValue() as HashMap<Any, Any>
+                val book: Livro = Livro()
 
-        book.autor = livro.getValue("autor") as String
-        book.nome = livro.getValue("nome") as String
-        book.descricao = livro.getValue("descricao") as String
-        book.capa = livro.getValue("capa") as String
-        book.estoque = livro.getValue("estoque") as EstoqueLivro
+                book.autor = livro.getValue("autor") as String
+                book.nome = livro.getValue("nome") as String
+                book.descricao = livro.getValue("descricao") as String
+                book.capa = livro.getValue("capa") as String
 
 
-        Log.d("autor","autor: " + book.autor)
-
+                Log.d("autor", "autor: " + book.autor)
+            }
+        }
     }
 
 

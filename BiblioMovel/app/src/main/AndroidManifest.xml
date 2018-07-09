@@ -24,6 +24,9 @@
         <activity
             android:name=".ProfileActivity"
             android:theme="@style/FullScreenTheme" />
+        <activity
+            android:name=".SigninActivity"
+            android:theme="@style/FullScreenTheme" />
     </application>
 
 </manifest>
