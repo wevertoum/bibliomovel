@@ -2,6 +2,8 @@ package br.ufg.inf.level6.bibliomovel.services
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
@@ -23,6 +25,9 @@ class BooksAdapter(private val context: Context ,private val list: ArrayList<Liv
         //This parameter helps us to know which item view is wanted by adapter.
         (view.findViewById<TextView>(R.id.name)).text = list[position].nome
         (view.findViewById<TextView>(R.id.autor)).text = list[position].autor
+        (view.findViewById<TextView>(R.id.txtNumEstoque)).text = list[position].estoque?.disponiveis.toString()
+
+
         return view
     }
 

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import br.ufg.inf.level6.bibliomovel.models.EstoqueLivro
@@ -17,6 +18,11 @@ import java.lang.reflect.Array
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
+import kotlin.jvm.internal.Ref
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemClickListener
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,7 +45,8 @@ class MainActivity : AppCompatActivity() {
 
                 var adapter = BooksAdapter(this@MainActivity, bookList)
                 //ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_list_item_1, android.R.id.text1, array)
-                findViewById<ListView>(R.id.list_item).adapter = adapter
+                var listView = findViewById<ListView>(R.id.list_item)
+                listView.adapter = adapter
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -65,6 +72,10 @@ class MainActivity : AppCompatActivity() {
                 book.nome = livro.getValue("nome") as String
                 book.descricao = livro.getValue("descricao") as String
                 book.capa = livro.getValue("capa") as String
+                var estoque = livro.getValue("estoque") as HashMap<Any, Any>
+
+                book.estoque = EstoqueLivro(estoque.getValue("disponiveis") as Long,
+                        estoque.getValue("emprestados") as Long)
 
                 bookList.add(book)
                 Log.d("autor", "autor: " + book.autor)
