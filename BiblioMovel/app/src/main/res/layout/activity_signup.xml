@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.ufg.inf.level6.bibliomovel.LoginActivity">
+    tools:context="br.ufg.inf.level6.bibliomovel.LoginActivity"
+    tools:layout_editor_absoluteY="81dp">
 
 
     <android.support.constraint.ConstraintLayout
@@ -19,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/signinTxtTitle"
+            android:id="@+id/signupTxtTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -32,23 +33,23 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/signinImgLogo" />
+            app:layout_constraintStart_toEndOf="@+id/signupImgLogo" />
 
         <ImageView
-            android:id="@+id/signinImgLogo"
+            android:id="@+id/signupImgLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/signinTxtTitle"
+            app:layout_constraintTop_toTopOf="@+id/signupTxtTitle"
             app:srcCompat="@drawable/ic_book" />
 
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/signinInputHolder"
+        android:id="@+id/signupInputHolder"
         android:layout_width="0dp"
         android:layout_height="459dp"
         android:layout_marginBottom="8dp"
@@ -63,7 +64,7 @@
         app:layout_constraintVertical_bias="0.504">
 
         <EditText
-            android:id="@+id/signinEdtEmail"
+            android:id="@+id/signupEdtEmail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -76,15 +77,16 @@
             android:textColorHint="#A0A0A0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/signinIconEmail"
+            app:layout_constraintStart_toEndOf="@+id/signupIconEmail"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/signinNome"
+            android:id="@+id/signupNome"
+            out_constraintStart_toEndOf="@+id/signupIconEmail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="116dp"
+            android:layout_marginTop="12dp"
             android:backgroundTint="#000000"
             android:ems="10"
             android:hint="nome"
@@ -92,16 +94,15 @@
             android:textColor="#000000"
             android:textColorHint="#A0A0A0"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/signinIconEmail"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/signupIconNome"
+            app:layout_constraintTop_toBottomOf="@+id/signupEdtEmail" />
 
         <EditText
-            android:id="@+id/signinCPF"
+            android:id="@+id/signupCPF"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="168dp"
+            android:layout_marginTop="12dp"
             android:backgroundTint="#000000"
             android:ems="10"
             android:hint="CPF"
@@ -110,28 +111,28 @@
             android:textColorHint="#A0A0A0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/signinIconEmail"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/signupIconEmail"
+            app:layout_constraintTop_toBottomOf="@+id/signupNome" />
 
         <ImageView
-            android:id="@+id/signinIconCPF"
+            android:id="@+id/signupIconCPF"
             android:layout_width="52dp"
-            android:layout_height="34dp"
+            android:layout_height="0dp"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:tint="#FF8C00"
-            app:layout_constraintBottom_toBottomOf="@+id/signinEdtSenhaConfirmacao"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/signinCPF"
+            app:layout_constraintBottom_toBottomOf="@+id/signupCPF"
+            app:layout_constraintTop_toTopOf="@+id/signupCPF"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_cpf" />
 
 
         <EditText
-            android:id="@+id/signinTelefone"
+            android:id="@+id/signupTelefone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
+            android:layout_marginTop="12dp"
             android:backgroundTint="#000000"
             android:ems="10"
             android:hint="telefone"
@@ -140,74 +141,79 @@
             android:textColorHint="#A0A0A0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/signinIconEmail"
-            tools:layout_editor_absoluteY="214dp" />
+            app:layout_constraintStart_toEndOf="@+id/signupIconEmail"
+            app:layout_constraintTop_toBottomOf="@+id/signupCPF" />
 
         <ImageView
-            android:id="@+id/signinIconTEL"
+            android:id="@+id/signupIconTEL"
             android:layout_width="52dp"
-            android:layout_height="34dp"
+            android:layout_height="0dp"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:tint="#FF8C00"
-            app:layout_constraintBottom_toBottomOf="@+id/signinEdtSenhaConfirmacao"
+            app:layout_constraintBottom_toBottomOf="@+id/signupTelefone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/signinTelefone"
+            app:layout_constraintTop_toTopOf="@+id/signupTelefone"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_telefone" />
 
 
         <ImageView
-            android:id="@+id/signinIconEmail"
+            android:id="@+id/signupIconEmail"
             android:layout_width="54dp"
-            android:layout_height="33dp"
+            android:layout_height="0dp"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:tint="#FF8C00"
-            app:layout_constraintBottom_toBottomOf="@+id/signinEdtEmail"
+            app:layout_constraintBottom_toBottomOf="@+id/signupEdtEmail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/signinEdtEmail"
+            app:layout_constraintTop_toTopOf="@+id/signupEdtEmail"
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/ic_email" />
 
         <ImageView
-            android:id="@+id/signinIconNome"
+            android:id="@+id/signupIconNome"
             android:layout_width="55dp"
-            android:layout_height="39dp"
-            android:tint="#FF8C00"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/signinNome"
-            app:srcCompat="@drawable/ic_person" />
-
-        <ImageView
-            android:id="@+id/signinIconSenha"
-            android:layout_width="52dp"
-            android:layout_height="34dp"
-            android:tint="#FF8C00"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_lock"
-            tools:layout_editor_absoluteY="260dp" />
-
-        <ImageView
-            android:id="@+id/signinIconSenhaConfirmacao"
-            android:layout_width="52dp"
-            android:layout_height="34dp"
+            android:layout_height="0dp"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:tint="#FF8C00"
-            app:layout_constraintBottom_toBottomOf="@+id/signinEdtSenhaConfirmacao"
+            app:layout_constraintBottom_toBottomOf="@+id/signupNome"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/signinEdtSenhaConfirmacao"
+            app:layout_constraintTop_toTopOf="@+id/signupNome"
+            app:srcCompat="@drawable/ic_person" />
+
+        <ImageView
+            android:id="@+id/signupIconSenha"
+            android:layout_width="52dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:tint="#FF8C00"
+            app:layout_constraintBottom_toBottomOf="@+id/signupSenha"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/signupSenha"
+            app:srcCompat="@drawable/ic_lock" />
+
+        <ImageView
+            android:id="@+id/signupIconSenhaConfirmacao"
+            android:layout_width="52dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:tint="#FF8C00"
+            app:layout_constraintBottom_toBottomOf="@+id/signupEdtSenhaConfirmacao"
+            app:layout_constraintTop_toTopOf="@+id/signupEdtSenhaConfirmacao"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_lock" />
 
 
         <EditText
-            android:id="@+id/signinEdtSenhaConfirmacao"
+            android:id="@+id/signupEdtSenhaConfirmacao"
             android:layout_width="307dp"
             android:layout_height="44dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="192dp"
+            android:layout_marginTop="12dp"
             android:backgroundTint="#000000"
             android:ems="10"
             android:hint="confirmação de senha"
@@ -215,15 +221,14 @@
             android:textColor="#DCDCDC"
             android:textColorHint="#A0A0A0"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/signinIconSenha"
-            app:layout_constraintTop_toBottomOf="@+id/signinEdtEmail" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/signupIconSenha"
+            app:layout_constraintTop_toBottomOf="@+id/signupSenha" />
 
         <Button
-            android:id="@+id/signinBtnCadastrar"
+            android:id="@+id/signupBtnCadastrar"
             android:layout_width="368dp"
             android:layout_height="45dp"
-            android:layout_marginBottom="7dp"
             android:background="@drawable/rounded_button"
             android:fontFamily="casual"
             android:text="CADASTRAR"
@@ -232,14 +237,18 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <EditText
-            android:id="@+id/signinSenha"
-            android:layout_width="308dp"
+            android:id="@+id/signupSenha"
+            android:layout_width="0dp"
             android:layout_height="42dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="12dp"
             android:ems="10"
             android:hint="senha"
             android:inputType="numberPassword"
-            tools:layout_editor_absoluteX="52dp"
-            tools:layout_editor_absoluteY="263dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/signupIconSenha"
+            app:layout_constraintTop_toBottomOf="@+id/signupTelefone" />
+
 
     </android.support.constraint.ConstraintLayout>
 
