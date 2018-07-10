@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
-        val intent = Intent(this, SignupActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
 
     }
