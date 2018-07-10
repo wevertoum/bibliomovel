@@ -60,7 +60,7 @@ class SignupActivity : AppCompatActivity() {
         btnCreateAccount = findViewById<View>(R.id.signupBtnCadastrar) as Button
         mProgressBar = ProgressDialog(this)
         mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mDatabase!!.reference!!.child("Users")
+        mDatabaseReference = mDatabase!!.reference!!.child("usuarios")
         mAuth = FirebaseAuth.getInstance()
         btnCreateAccount!!.setOnClickListener { createNewAccount() }
     }
@@ -93,10 +93,14 @@ class SignupActivity : AppCompatActivity() {
                             val userId = mAuth!!.currentUser!!.uid
 
                             //Atualiza informações do perfil
-                            val currentUserDb = mDatabaseReference!!.child(userId)
+                            val currentUserDb = mDatabaseReference!!.child(userId).child("perfil")
                             currentUserDb.child("nome").setValue(nome)
-                            currentUserDb.child("CPF").setValue(CPF)
+                            currentUserDb.child("cpf").setValue(CPF)
+                            currentUserDb.child("email").setValue(email)
+                            currentUserDb.child("telefone").setValue(telefone)
+                            currentUserDb.child("senha").setValue(password)
                             updateUserInfoAndUI()
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.exception)
