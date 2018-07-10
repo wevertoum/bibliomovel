@@ -2,25 +2,59 @@ package br.ufg.inf.level6.bibliomovel
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 class ProfileActivity : AppCompatActivity() {
 
-    private lateinit var edtNome:   EditText
-    private lateinit var edtCpf:    EditText
-    private lateinit var edtFone:   EditText
-    private lateinit var edtEmail:  EditText
-    private lateinit var tbBtn1:    ImageButton
-    private lateinit var tbBtn2:    ImageButton
+    //Referencias Firebase
+    private var mDatabaseReference: DatabaseReference? = null
+    private var mDatabase: FirebaseDatabase? = null
+    private var mAuth: FirebaseAuth? = null
+
+    //Elementos tela
+    private var profileNome: TextView? = null
+    private var profileCPF: TextView? = null
+    private var profileTelefone: TextView? = null
+    private var profileEmail: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-
-        edtNome =   findViewById(R.id.profileInputNome)
-        edtCpf =    findViewById(R.id.profileInputCPF)
-        edtFone =   findViewById(R.id.profileInputTelefone)
-        edtEmail =  findViewById(R.id.profileInputEmail)
+        initialise()
     }
+
+    private fun initialise() {
+        mDatabase = FirebaseDatabase.getInstance()
+        mDatabaseReference = mDatabase!!.reference!!.child("usuarios")
+        mAuth = FirebaseAuth.getInstance()
+        profileNome = findViewById<View>(R.id.profileInputNome) as TextView
+        profileCPF = findViewById<View>(R.id.profileInputCPF) as TextView
+        profileTelefone = findViewById<View>(R.id.profileInputTelefone) as TextView
+        profileEmail = findViewById<View>(R.id.profileInputEmail) as TextView
+    }
+
+    //puxar dados salvos no firebase
+    override fun onStart() {
+        super.onStart()
+        val mUser = mAuth!!.currentUser
+        val mUserReference = mDatabaseReference!!.child(mUser!!.uid)
+
+        profileEmail!!.text = mUser.email
+
+        mUserReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                profileCPF!!.text = snapshot.child("perfil").child("cpf").value as String
+                profileTelefone!!.text = snapshot.child("perfil").child("telefone").value as String
+                profileNome!!.text = snapshot.child("perfil").child("nome").value as String
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {}
+        })
+    }
+
 }
