@@ -1,0 +1,183 @@
+[33mcommit 5fbd8a280dd1bdafc1313d14c25e2841844c0f38[m[33m ([m[1;31morigin/dev-paula[m[33m, [m[1;32mdev-paula[m[33m)[m
+Author: Paula Resende <bellsuo@gmail.com>
+Date:   Mon Jul 9 20:48:13 2018 -0300
+
+    Migração para branch individual
+
+[1mdiff --git a/BiblioMovel/.idea/workspace.xml b/BiblioMovel/.idea/workspace.xml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e69de29[m
+[1mdiff --git a/BiblioMovel/app/app.iml b/BiblioMovel/app/app.iml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e69de29[m
+[1mdiff --git a/BiblioMovel/app/src/main/java/br/ufg/inf/level6/bibliomovel/MainActivity.kt b/BiblioMovel/app/src/main/java/br/ufg/inf/level6/bibliomovel/MainActivity.kt[m
+[1mindex 3e9d792..b49457f 100644[m
+[1m--- a/BiblioMovel/app/src/main/java/br/ufg/inf/level6/bibliomovel/MainActivity.kt[m
+[1m+++ b/BiblioMovel/app/src/main/java/br/ufg/inf/level6/bibliomovel/MainActivity.kt[m
+[36m@@ -39,7 +39,7 @@[m [mclass MainActivity : AppCompatActivity() {[m
+         super.onCreate(savedInstanceState)[m
+         setContentView(R.layout.activity_main)[m
+ [m
+[31m-        val intent = Intent(this, SigninActivity::class.java)[m
+[32m+[m[32m        val intent = Intent(this, ProfileActivity::class.java)[m
+         startActivity(intent)[m
+     }[m
+ [m
+[1mdiff --git a/BiblioMovel/app/src/main/java/br/ufg/inf/level6/bibliomovel/SigninActivity.kt b/BiblioMovel/app/src/main/java/br/ufg/inf/level6/bibliomovel/SigninActivity.kt[m
+[1mindex bb3390a..41e6b72 100644[m
+[1m--- a/BiblioMovel/app/src/main/java/br/ufg/inf/level6/bibliomovel/SigninActivity.kt[m
+[1m+++ b/BiblioMovel/app/src/main/java/br/ufg/inf/level6/bibliomovel/SigninActivity.kt[m
+[36m@@ -1,119 +1,58 @@[m
+ package br.ufg.inf.level6.bibliomovel[m
+ [m
+[31m-import android.app.ProgressDialog[m
+ import android.support.v7.app.AppCompatActivity[m
+ import android.os.Bundle[m
+[31m-import android.text.TextUtils[m
+[31m-import android.util.Log[m
+[31m-import android.view.View[m
+[31m-import android.widget.Button[m
+ import com.google.firebase.auth.FirebaseAuth[m
+ import com.google.firebase.auth.FirebaseUser[m
+ import android.widget.EditText[m
+[31m-import android.widget.Toast[m
+ import com.google.firebase.auth.FirebaseAuth.AuthStateListener[m
+[31m-import com.google.firebase.database.DatabaseReference[m
+[31m-import com.google.firebase.database.FirebaseDatabase[m
+ [m
+ [m
+ class SigninActivity : AppCompatActivity() {[m
+[31m-    private var etEmail: EditText? = null[m
+[31m-    private var etPassword: EditText? = null[m
+[31m-    private var btnCreateAccount: Button? = null[m
+[31m-    private var mProgressBar: ProgressDialog? = null[m
+[31m-[m
+[31m-    //Firebase referencias[m
+[31m-    private var mDatabaseReference: DatabaseReference? = null[m
+[31m-    private var mDatabase: FirebaseDatabase? = null[m
+[31m-    private var mAuth: FirebaseAuth? = null[m
+[31m-[m
+[31m-    private val TAG = "SigninActivity"[m
+[32m+[m[32m    private lateinit var edtEmail:   EditText[m
+[32m+[m[32m    private lateinit var edtSenha:   EditText[m
+ [m
+[31m-    //variaveis globais[m
+[31m-    private var email: String? = null[m
+[31m-    private var password: String? = null[m
+[32m+[m[32m    //Inicializa instancia FireBaseAuth[m
+[32m+[m[32m    private var mAuth: FirebaseAuth? = null[m
+ [m
+     override fun onCreate(savedInstanceState: Bundle?) {[m
+[31m-       super.onCreate(savedInstanceState)[m
+[31m-       setContentView(R.layout.activity_signin)[m
+[31m-       initialise()[m
+[31m-    }[m
+[31m-[m
+[31m-    //inicializa variaveis tela chamando ID[m
+[31m-    private fun initialise() {[m
+[31m-       etEmail = findViewById<View>(R.id.signinEdtEmail) as EditText[m
+[31m-       etPassword = findViewById<View>(R.id.signinSenha) as EditText[m
+[31m-       btnCreateAccount = findViewById<View>(R.id.signinBtnCadastrar) as Button[m
+[31m-       mProgressBar = ProgressDialog(this)[m
+[31m-[m
+[31m-       //mDatabaseReference é inicializado com banco de dados local com chave "Users"[m
+[31m-       mDatabase = FirebaseDatabase.getInstance()[m
+[31m-       //onde se armazena os dados[m
+[31m-       mDatabaseReference = mDatabase!!.reference!!.child("Users")[m
+[31m-       //servico de autenticacao para autenticar criação de novo usuário[m
+[31m-       mAuth = FirebaseAuth.getInstance()[m
+[31m-[m
+[31m-       //listener adicionado para chamar função que cria nova conta[m
+[31m-       btnCreateAccount!!.setOnClickListener { createNewAccount() }[m
+[31m-    }[m
+[31m-[m
+[31m-    private fun createNewAccount() {[m
+[31m-       email = etEmail?.text.toString()[m
+[31m-       password = etPassword?.text.toString()[m
+[31m-[m
+[31m-       //validação básica se está vazio[m
+[31m-        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {[m
+[31m-            mProgressBar!!.setMessage("Cadastrando usuário...")[m
+[31m-            mProgressBar!!.show()[m
+[31m-[m
+[31m-            mAuth!![m
+[31m-              .createUserWithEmailAndPassword(email!!, password!!)[m
+[31m-              .addOnCompleteListener(this) { task ->[m
+[31m-                  mProgressBar!!.hide()[m
+[31m-                  if (task.isSuccessful) {[m
+[31m-                    // Cadastro com sucesso, atualizar UI do usuario logado[m
+[31m-                    Log.d(TAG, "createUserWithEmail:success")[m
+[31m-                    val userId = mAuth!!.currentUser!!.uid[m
+[31m-[m
+[31m-[m
+[31m-                    //atualizar informação do usuário[m
+[31m-                    val currentUserDb = mDatabaseReference!!.child(userId)[m
+[31m-                    currentUserDb.child("password").setValue(password)[m
+[31m-                    currentUserDb.child("email").setValue(email)[m
+[31m-                    updateUserInfoAndUI()[m
+[31m-                  } else {[m
+[31m-                    //se o cadastro falhar mostrar[m
+[31m-                   Log.w(TAG, "createUserWithEmail:failure", task.exception)[m
+[31m-                   Toast.makeText(this@SigninActivity, "Cadastro não realizado.",[m
+[31m-                                   Toast.LENGTH_SHORT).show()[m
+[31m-                 }[m
+[31m-            }[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-        } else {[m
+[31m-           Toast.makeText(this, "Enter all details", Toast.LENGTH_SHORT).show()[m
+[31m-        }[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[32m+[m[32m        mAuth = FirebaseAuth.getInstance()[m
+[32m+[m[32m        super.onCreate(savedInstanceState)[m
+[32m+[m[32m        setContentView(R.layout.activity_signin)[m
+ [m
+[32m+[m[32m        edtEmail = findViewById(R.id.signinSenha)[m
+[32m+[m[32m        edtSenha = findViewById(R.id.loginEdtEmail) // esse nome ta certo?[m
+ [m
+[32m+[m[32m    }[m
+ [m
+[32m+[m[32m    override fun onStart() {[m
+[32m+[m[32m        //Checa se o Usuário já não está logado[m
+[32m+[m[32m        val currentUser = mAuth!!.currentUser[m
+[32m+[m[32m        updateUI(currentUser)[m
+[32m+[m
+[32m+[m[32m        var email: String; var senha: String[m
+[32m+[m
+[32m+[m[32m        email = edtEmail.text.toString()[m
+[32m+[m[32m        senha = edtSenha.text.toString()[m
+[32m+[m[32m        //Cria Usuaŕio com e-mail e senha[m
+[32m+[m[32m        mAuth!!.createUserWithEmailAndPassword(email, senha)[m
+[32m+[m[32m                .addOnCompleteListener(this) {[m
+[32m+[m[32m                    task ->[m
+[32m+[m[32m                    if (task.isSuccessful) {[m
+[32m+[m[32m                        // Sign in: success[m
+[32m+[m[32m                        // update UI for current User[m
+[32m+[m[32m                        val user = mAuth!!.currentUser[m
+[32m+[m[32m                        updateUI(user)[m
+[32m+[m[32m                    } else {[m
+[32m+[m[32m                        // Sign in: fail[m
+[32m+[m[32m                        updateUI(null)[m
+[32m+[m[32m                    }[m
+[32m+[m[32m                }[m
+ [m
+ [m
+     }[m
+ [m
+[31m-    private fun updateUserInfoAndUI() {[m
+[31m-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.[m
+[31m-    }[m
+ [m
+[31m-    }[m
+ [m
+ [m
+[32m+[m[32m}[m

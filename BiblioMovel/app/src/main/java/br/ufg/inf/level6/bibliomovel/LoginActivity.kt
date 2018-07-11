@@ -50,6 +50,9 @@ class LoginActivity : AppCompatActivity() {
         mProgressBar = ProgressDialog(this)
         mAuth = FirebaseAuth.getInstance()
 
+        btnCreateAccount!!
+                .setOnClickListener { startActivity(Intent(this@LoginActivity,
+                        SignupActivity::class.java)) }
         btnLogin!!.setOnClickListener { loginUser() }
     }
 
@@ -83,7 +86,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun updateUI() {
-        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+        val intent = Intent(this@LoginActivity, ProfileActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }

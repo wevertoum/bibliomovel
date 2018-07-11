@@ -27,17 +27,15 @@ class MainActivity : AppCompatActivity() {
     var bookList = ArrayList<Livro>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         var database = FirebaseDatabase.getInstance()
         var myRef = database.getReference().child("livros")
 
-        //Add event listener to "livros"
-        myRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                //add data livros to list
-                addDataToList(dataSnapshot)
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
 
                 var adapter = BooksAdapter(this@MainActivity, bookList)
                 //ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_list_item_1, android.R.id.text1, array)
@@ -61,11 +59,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addDataToList(dataSnapshot: DataSnapshot) {
-        //get database items "Livros"
-        val items = dataSnapshot.children.iterator()
 
-        if(items !== null) {
+        }
 
             bookList.clear()
 
@@ -93,5 +88,3 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-}
