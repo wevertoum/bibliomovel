@@ -12,8 +12,12 @@ import android.view.LayoutInflater
 import br.ufg.inf.level6.bibliomovel.MainActivity
 import br.ufg.inf.level6.bibliomovel.R
 import android.content.Intent
+import android.support.v4.app.ActivityCompat.startActivity
 import android.support.v4.app.ActivityCompat.startActivityForResult
-import android.widget.*
+import android.support.v4.content.ContextCompat
+import br.ufg.inf.level6.bibliomovel.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 
 class BooksAdapter(private val context: Context, private val list: ArrayList<Livro>) : BaseAdapter() {
@@ -73,7 +77,19 @@ class BooksAdapter(private val context: Context, private val list: ArrayList<Liv
 
     fun reservarLivro(position: Int){
         var livro = getItem(position)
+        var isLogged = livro.reservarLivro(livro)
 
-        livro.reservarLivro(livro)
+        var usuarioRef = FirebaseDatabase.getInstance().getReference("usuarios")
+        
+        if(livro.estoque!!.disponiveis <= 0){
+            return Toast.makeText(this@BooksAdapter.context, "Não há livros disponíveis!", Toast.LENGTH_LONG).show()
+        }
+        if(isLogged) {
+            return Toast.makeText(this@BooksAdapter.context, "Livro reservado com sucesso!", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this@BooksAdapter.context, "É necessário estar logado!", Toast.LENGTH_LONG).show()
+            var intent: Intent = Intent(this@BooksAdapter.context, LoginActivity::class.java)
+            return this@BooksAdapter.context.startActivity(intent)
+        }
     }
 }
