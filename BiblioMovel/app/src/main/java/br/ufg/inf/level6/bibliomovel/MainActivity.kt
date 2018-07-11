@@ -41,8 +41,6 @@ class MainActivity : AppCompatActivity() {
                 //add data livros to list
                 addDataToList(dataSnapshot)
 
-                var array = ArrayList<String>()
-
                 var adapter = BooksAdapter(this@MainActivity, bookList)
                 //ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_list_item_1, android.R.id.text1, array)
                 var listView = findViewById<ListView>(R.id.list_item)
@@ -62,23 +60,27 @@ class MainActivity : AppCompatActivity() {
 
         if(items !== null) {
 
+            bookList.clear()
+
             while(items.hasNext()) {
                 var currentItem = items.next()
                 var livro = currentItem.getValue() as HashMap<Any, Any>
                 val book: Livro = Livro()
 
                 //Get properties
+                book.id = currentItem.key
                 book.autor = livro.getValue("autor") as String
                 book.nome = livro.getValue("nome") as String
                 book.descricao = livro.getValue("descricao") as String
                 book.capa = livro.getValue("capa") as String
+                book.cod = livro.getValue("cod") as Long
+                book.total_paginas = livro.getValue("total_paginas") as Long
                 var estoque = livro.getValue("estoque") as HashMap<Any, Any>
 
                 book.estoque = EstoqueLivro(estoque.getValue("disponiveis") as Long,
                         estoque.getValue("emprestados") as Long)
 
                 bookList.add(book)
-                Log.d("autor", "autor: " + book.autor)
             }
         }
     }
