@@ -5,6 +5,7 @@ import android.widget.Toast
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import java.util.*
 
 /**
  * Created by erick on 07/07/18.
@@ -23,12 +24,12 @@ class Livro {
     var livroRef = FirebaseDatabase.getInstance().getReference("livros")
     var usuarioRef = FirebaseDatabase.getInstance().getReference("usuarios")
 
-    fun reservarLivro(livro: Livro) : String{
+    fun reservarLivro(livro: Livro) : Boolean{
 
         var user = FirebaseAuth.getInstance().currentUser
 
         if(user == null)
-            return "Usuário precisa estar logado"
+            return false
 
         if(livro.estoque!!.disponiveis > 0){
             var disponiveis = livro.estoque!!.disponiveis - 1
@@ -41,10 +42,8 @@ class Livro {
             var interesse = LivroInteresse(livro.cod!!, 0)
             var interesseId = usuarioRef.child(user!!.uid).child("interesses").push().key
             usuarioRef.child(user!!.uid).child("interesses").child(interesseId).setValue(interesse)
-
-        } else {
-            return "Não foi possível realizar a reserva!"
+            return true
         }
-        return "Livro reservado com sucesso!"
+        return false
     }
 }

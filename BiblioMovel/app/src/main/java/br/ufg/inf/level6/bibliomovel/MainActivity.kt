@@ -26,9 +26,7 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
-    var database = FirebaseDatabase.getInstance()
-    var myRef = database.getReference().child("livros")
-    var bookList = ArrayList<Livro>()
+        var bookList = ArrayList<Livro>()
     val bookNotification: (Int) -> Unit = {
 
         Toast.makeText(this, "Texto", Toast.LENGTH_LONG).show()
@@ -37,6 +35,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        var database = FirebaseDatabase.getInstance()
+        var myRef = database.getReference().child("livros")
 
         //Add event listener to "livros"
         myRef.addValueEventListener(object : ValueEventListener {
