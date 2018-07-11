@@ -24,11 +24,7 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
-        var bookList = ArrayList<Livro>()
-    val bookNotification: (Int) -> Unit = {
-
-        Toast.makeText(this, "Texto", Toast.LENGTH_LONG).show()
-    }
+    var bookList = ArrayList<Livro>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
