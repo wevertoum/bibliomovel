@@ -5,8 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.ListView
+import android.widget.*
 import br.ufg.inf.level6.bibliomovel.models.EstoqueLivro
 import br.ufg.inf.level6.bibliomovel.models.Livro
 import br.ufg.inf.level6.bibliomovel.services.BooksAdapter
@@ -19,10 +18,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 import kotlin.jvm.internal.Ref
-import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
-
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -52,6 +48,15 @@ class MainActivity : AppCompatActivity() {
                 Log.w("ERR", "Failed to read value.", error.toException())
             }
         })
+
+        findViewById<ImageButton>(R.id.mainActBtn1).setOnClickListener {
+            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+            finish()
+        }
+
+        findViewById<ImageButton>(R.id.mainActBtn2).setOnClickListener {
+            startActivity(Intent(this@MainActivity, ProfileActivity::class.java))
+        }
     }
 
     private fun addDataToList(dataSnapshot: DataSnapshot) {

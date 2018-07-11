@@ -7,21 +7,16 @@ import android.graphics.Color
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import br.ufg.inf.level6.bibliomovel.models.Livro
 import android.view.LayoutInflater
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
 import br.ufg.inf.level6.bibliomovel.MainActivity
 import br.ufg.inf.level6.bibliomovel.R
 import android.content.Intent
 import android.support.v4.app.ActivityCompat.startActivityForResult
+import android.widget.*
 
 
-
-
-class BooksAdapter(private val context: Context ,private val list: ArrayList<Livro>) : BaseAdapter() {
+class BooksAdapter(private val context: Context, private val list: ArrayList<Livro>) : BaseAdapter() {
 
     private var inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
@@ -29,21 +24,39 @@ class BooksAdapter(private val context: Context ,private val list: ArrayList<Liv
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view = inflater.inflate(R.layout.book_view, null, false)
+        val txtAvailable = (view.findViewById<TextView>(R.id.txtNumEstoque))
+        val icon = (view.findViewById<ImageView>(R.id.ic_status))
         //Adapter gives position parameter.
         //This parameter helps us to know which item view is wanted by adapter.
         (view.findViewById<TextView>(R.id.name)).text = list[position].nome
         (view.findViewById<TextView>(R.id.autor)).text = list[position].autor
-        (view.findViewById<TextView>(R.id.txtNumEstoque)).text = list[position].estoque?.disponiveis.toString()
 
-        var imageButton = view.findViewById<ImageButton>(R.id.imageButton)
+        val qtd = String.format("%02d", list[position].estoque?.disponiveis)
+        txtAvailable.text = qtd
 
-        imageButton.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View) {
-                reservarLivro(position)
-            }
-        })
+        swapStatus(icon, txtAvailable, list[position].estoque!!.disponiveis > 0)
+
+        val imageButton = view.findViewById<ImageButton>(R.id.imageButton)
+        imageButton.setOnClickListener { reservarLivro(position) }
 
         return view
+    }
+
+    private fun swapStatus(icon: ImageView, txtAvailable: TextView, available: Boolean) {
+        val checkIcon = context.resources.getDrawable(R.drawable.ic_check)
+        val cancelIcon = context.resources.getDrawable(R.drawable.ic_cancel)
+        val red = context.resources.getColor(android.R.color.holo_red_dark)
+        val green = context.resources.getColor(android.R.color.holo_green_dark)
+
+        if (available) {
+            icon.setColorFilter(green)
+            icon.setImageDrawable(checkIcon)
+            txtAvailable.background.setTint(green)
+        } else {
+            icon.setColorFilter(red)
+            icon.setImageDrawable(cancelIcon)
+            txtAvailable.background.setTint(red)
+        }
     }
 
     override fun getItem(position: Int): Livro {

@@ -7,9 +7,71 @@
     android:layout_height="match_parent"
     tools:context="br.ufg.inf.level6.bibliomovel.MainActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/degrade"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/mainActBtn1"
+        android:layout_width="38dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/toolbar_button"
+        android:backgroundTint="@color/white"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_logout" />
+
+    <ImageButton
+        android:id="@+id/mainActBtn2"
+        android:layout_width="38dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/toolbar_button"
+        android:backgroundTint="@color/white"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_person" />
+
+    <TextView
+        android:id="@+id/mainTxtTitle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="casual"
+        android:gravity="left|center_vertical|center"
+        android:text="BiblioMóvel"
+        android:textAlignment="center"
+        android:textAppearance="@android:style/TextAppearance.Material.Title"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintEnd_toStartOf="@+id/mainActBtn2"
+        app:layout_constraintStart_toEndOf="@+id/mainActBtn1"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -19,8 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
 
         <ListView
             android:id="@+id/list_item"

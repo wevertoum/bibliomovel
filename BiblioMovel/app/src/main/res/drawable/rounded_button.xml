@@ -2,12 +2,12 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" android:state_enabled="true">
         <shape android:shape="rectangle">
-            <solid android:color="@color/colorPrimaryAlpha224" />
+            <solid android:color="@color/colorPrimaryAlpha108" />
             <corners
-                android:bottomLeftRadius="2dp"
-                android:topLeftRadius="2dp"
-                android:bottomRightRadius="2dp"
-                android:topRightRadius="2dp"
+                android:bottomLeftRadius="5dp"
+                android:topLeftRadius="5dp"
+                android:bottomRightRadius="5dp"
+                android:topRightRadius="5dp"
                 />
         </shape>
     </item>
@@ -15,10 +15,10 @@
         <shape android:shape="rectangle">
             <solid android:color="@color/colorPrimary" />
             <corners
-                android:bottomLeftRadius="2dp"
-                android:topLeftRadius="2dp"
-                android:bottomRightRadius="2dp"
-                android:topRightRadius="2dp"
+                android:bottomLeftRadius="5dp"
+                android:topLeftRadius="5dp"
+                android:bottomRightRadius="5dp"
+                android:topRightRadius="5dp"
                 />
         </shape>
     </item>
@@ -26,10 +26,10 @@
         <shape android:shape="rectangle">
             <solid android:color="@color/blueGreyLightAlpha108" />
             <corners
-                android:bottomLeftRadius="2dp"
-                android:topLeftRadius="2dp"
-                android:bottomRightRadius="2dp"
-                android:topRightRadius="2dp"
+                android:bottomLeftRadius="5dp"
+                android:topLeftRadius="5dp"
+                android:bottomRightRadius="5dp"
+                android:topRightRadius="5dp"
                 />
         </shape>
     </item>
