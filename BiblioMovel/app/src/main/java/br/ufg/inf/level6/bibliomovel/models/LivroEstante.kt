@@ -1,11 +1,14 @@
 package br.ufg.inf.level6.bibliomovel.models
 
+import com.google.firebase.database.FirebaseDatabase
+
 /**
  * Created by erick on 07/07/18.
  */
-data class LivroEstante(
-        val cod: Int,
-        var data_emprestimo: String,
-        var data_devolucao: String?,
-        var previsao_devolucao: String
-)
+class LivroEstante {
+    var id: String? = null
+    var cod: Long? = null
+    var data_emprestimo: String? = null
+    var data_devolucao: String? = null
+    var previsao_devolucao: String? = null
+}

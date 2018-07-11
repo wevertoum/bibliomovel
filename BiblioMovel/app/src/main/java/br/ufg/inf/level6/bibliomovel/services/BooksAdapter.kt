@@ -16,9 +16,10 @@ import android.widget.Toast
 import br.ufg.inf.level6.bibliomovel.MainActivity
 import br.ufg.inf.level6.bibliomovel.R
 import android.content.Intent
+import android.support.v4.app.ActivityCompat.startActivity
 import android.support.v4.app.ActivityCompat.startActivityForResult
-
-
+import android.support.v4.content.ContextCompat
+import br.ufg.inf.level6.bibliomovel.LoginActivity
 
 
 class BooksAdapter(private val context: Context ,private val list: ArrayList<Livro>) : BaseAdapter() {
@@ -37,11 +38,7 @@ class BooksAdapter(private val context: Context ,private val list: ArrayList<Liv
 
         var imageButton = view.findViewById<ImageButton>(R.id.imageButton)
 
-        imageButton.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View) {
-                reservarLivro(position)
-            }
-        })
+        imageButton.setOnClickListener { reservarLivro(position) }
 
         return view
     }
@@ -60,7 +57,9 @@ class BooksAdapter(private val context: Context ,private val list: ArrayList<Liv
 
     fun reservarLivro(position: Int){
         var livro = getItem(position)
-
-        livro.reservarLivro(livro)
+        var text: String = livro.reservarLivro(livro)
+        Toast.makeText(this@BooksAdapter.context, text, Toast.LENGTH_LONG).show()
+        var intent: Intent = Intent(this@BooksAdapter.context, LoginActivity::class.java)
+        this@BooksAdapter.context.startActivity(intent)
     }
 }
