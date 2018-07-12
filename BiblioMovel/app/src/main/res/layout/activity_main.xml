@@ -5,7 +5,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.ufg.inf.level6.bibliomovel.MainActivity">
+    tools:context="br.ufg.inf.level6.bibliomovel.activities.MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar2"
@@ -28,10 +28,10 @@
         android:background="@drawable/toolbar_button"
         android:backgroundTint="@color/white"
         android:tint="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
+        app:layout_constraintBottom_toBottomOf="@+id/mainTxtTitle"
         app:layout_constraintDimensionRatio="h,1:1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mainTxtTitle"
         app:srcCompat="@drawable/ic_logout" />
 
     <ImageButton
@@ -44,7 +44,7 @@
         android:background="@drawable/toolbar_button"
         android:backgroundTint="@color/white"
         android:tint="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
+        app:layout_constraintBottom_toBottomOf="@+id/mainTxtTitle"
         app:layout_constraintDimensionRatio="h,1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

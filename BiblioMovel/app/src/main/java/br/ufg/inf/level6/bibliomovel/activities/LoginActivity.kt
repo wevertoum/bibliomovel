@@ -1,20 +1,17 @@
-package br.ufg.inf.level6.bibliomovel
+package br.ufg.inf.level6.bibliomovel.activities
 
 import android.app.ProgressDialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import android.support.annotation.NonNull
-import android.support.v4.app.FragmentActivity
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth.AuthStateListener
+import br.ufg.inf.level6.bibliomovel.R
 
 
 class LoginActivity : AppCompatActivity() {
@@ -86,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun updateUI() {
-        val intent = Intent(this@LoginActivity, ProfileActivity::class.java)
+        val intent = Intent(this@LoginActivity, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }

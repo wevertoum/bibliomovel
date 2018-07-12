@@ -8,11 +8,12 @@
 
     <ImageView
         android:id="@+id/capa"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="60dp"
+        android:layout_height="90dp"
         android:adjustViewBounds="false"
-        android:background="@drawable/default_image"
+        android:background="@drawable/default_book_cover"
         android:cropToPadding="false"
+        android:tint="@color/colorAccent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,9 +50,10 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:onClick="onClick"
         android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -68,7 +70,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/capa"
         app:layout_constraintTop_toBottomOf="@+id/autor"
-        app:srcCompat="@drawable/ic_check" />
+        app:srcCompat="@drawable/ic_library" />
 
     <TextView
         android:id="@+id/txtNumEstoque"

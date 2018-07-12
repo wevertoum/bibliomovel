@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bibliomovel_bg"
     android:theme="@style/FullScreenTheme"
-    tools:context="br.ufg.inf.level6.bibliomovel.LoginActivity">
+    tools:context="br.ufg.inf.level6.bibliomovel.activities.LoginActivity">
 
     <Button
         android:id="@+id/loginBtnNovaConta"

@@ -1,10 +1,9 @@
-package br.ufg.inf.level6.bibliomovel
+package br.ufg.inf.level6.bibliomovel.activities
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.*
 import br.ufg.inf.level6.bibliomovel.models.EstoqueLivro
 import br.ufg.inf.level6.bibliomovel.models.Livro
@@ -13,13 +12,10 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
-import java.lang.reflect.Array
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
-import kotlin.jvm.internal.Ref
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.Toast
+import br.ufg.inf.level6.bibliomovel.R
+import com.google.firebase.auth.FirebaseAuth
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,19 +23,27 @@ class MainActivity : AppCompatActivity() {
     var bookList = ArrayList<Livro>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        var database = FirebaseDatabase.getInstance()
-        var myRef = database.getReference().child("livros")
 
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
+        val database = FirebaseDatabase.getInstance()
+        // database.setPersistenceEnabled(true)
+        val myRef = database.reference.child("livros")
+
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                //add data livros to list
+                addDataToList(dataSnapshot)
+
+                bookList.sortByDescending { it.estoque!!.disponiveis }
 
                 var adapter = BooksAdapter(this@MainActivity, bookList)
                 //ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_list_item_1, android.R.id.text1, array)
                 var listView = findViewById<ListView>(R.id.list_item)
+
+                listView.divider = resources.getDrawable(R.drawable.toolbar_button)
+                listView.dividerHeight = 8
+
                 listView.adapter = adapter
             }
 
@@ -50,8 +54,8 @@ class MainActivity : AppCompatActivity() {
         })
 
         findViewById<ImageButton>(R.id.mainActBtn1).setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
             startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-            finish()
         }
 
         findViewById<ImageButton>(R.id.mainActBtn2).setOnClickListener {
@@ -59,12 +63,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun addDataToList(dataSnapshot: DataSnapshot) {
+        //get database items "Livros"
+        val items = dataSnapshot.children.iterator()
 
-        }
-
+        if (items !== null) {
             bookList.clear()
 
-            while(items.hasNext()) {
+            while (items.hasNext()) {
                 var currentItem = items.next()
                 var livro = currentItem.getValue() as HashMap<Any, Any>
                 val book: Livro = Livro()
@@ -86,5 +92,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
+}

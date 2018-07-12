@@ -17,7 +17,7 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="colorPrimary">@color/blueGreyLight</item>
         <item name="colorPrimaryDark">@color/blueGrey</item>
-        <item name="colorAccent">@color/whiteAlpha184</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
 </resources>
