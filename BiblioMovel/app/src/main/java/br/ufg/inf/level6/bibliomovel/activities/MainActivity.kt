@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                //add data livros to list
+                // adiciona data livros na lista
                 addDataToList(dataSnapshot)
 
                 bookList.sortByDescending { it.estoque!!.disponiveis }
